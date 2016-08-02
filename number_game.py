@@ -28,7 +28,13 @@ def play_game():
 		print("Congratulations! You guessed the number!")
 	else:
 		print("Your chances are over : (")
-		
+
 	print("The number is {}.".format(number))
+
+	play_again = input("Would you like to play again? Y / N").lower()
+	if play_again != 'n':
+		play_game()
+	else:
+		print("Come back later!")
 
 play_game()
