@@ -4,19 +4,31 @@ import random
 x = 1
 y = 10
 	
-print("Guess the number between {} and {}.".format(x, y))
+def play_game():
 
-number = random.randint(x,y)
+	print("Guess the number between {} and {}. You have 3 chances".format(x, y))
+	number = random.randint(x,y)
+	countdown = 3
 
-guess = None
+	while countdown:
+		try:
+			guess = int(input())
+		except ValueError:
+			print("That's not a number. Please try again.")
+		else:
+			if guess < number:
+				print("Not the correct number. The number is higher.")
+			elif guess > number:
+				print("Not the correct number. The number is lower.")
+			else:
+				break
+			countdown -= 1
 
-while guess != number:
-
-	guess = int(input())
-
-	if guess < number:
-		print("Not the correct number. Guess higher.")
-	elif guess > number:
-		print("Not the correct number. Guess lower.")
-	else:
+	if number == guess:
 		print("Congratulations! You guessed the number!")
+	else:
+		print("Your chances are over : (")
+		
+	print("The number is {}.".format(number))
+
+play_game()
